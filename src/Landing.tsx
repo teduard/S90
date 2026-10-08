@@ -5,10 +5,7 @@ import { HeroHeader } from "./components/HeroHeader";
 function Landing() {
   return (
     <>
-      <LandingPageLayout
-        content={<RelatedProducts />}
-        header={<HeroHeader />}
-      />
+      <div className="center"><input type="button" value="S90 Button" /></div>
     </>
   )
 }

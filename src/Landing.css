@@ -27,3 +27,15 @@
 .product-page-content {
   padding-top: 30px;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  
+  font-size: 50px;
+}
