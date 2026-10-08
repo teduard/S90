@@ -29,7 +29,7 @@ function DatabaseConfig() {
     const blob = new Blob([bin]);
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "BudGeta_db.sqlite";
+    a.download = "S90_db.sqlite";
     a.click();
   };
 

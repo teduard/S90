@@ -241,8 +241,8 @@ function MainLayout(props: IMainLayoutProps) {
             i18nStrings={i18nStrings}
             identity={{
               href: "/",
-              title: "BudGeta",
-              logo: { src: logo, alt: "BudGeta" },
+              title: "S90",
+              logo: { src: logo, alt: "S90" },
               onFollow: handleNavigationClick,
             }}
             utilities={[

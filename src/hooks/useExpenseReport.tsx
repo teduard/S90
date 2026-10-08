@@ -33,7 +33,7 @@ export const useExpenseReport = () => {
         />
       );
       const blob = await pdf(doc).toBlob();
-      saveAs(blob, `BudGeta_Expenses_${data.month}.pdf`);
+      saveAs(blob, `S90_Expenses_${data.month}.pdf`);
     } finally {
       setIsGenerating(false);
     }

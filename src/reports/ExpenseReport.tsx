@@ -263,7 +263,7 @@ export function ExpenseReport({
 
         {/* Footer */}
         <View style={styles.footer} fixed>
-          <Text>BudGeta / Expense Report / {month}</Text>
+          <Text>S90 / Expense Report / {month}</Text>
           <Text
             render={({ pageNumber, totalPages }) =>
               `Page ${pageNumber} of ${totalPages}`

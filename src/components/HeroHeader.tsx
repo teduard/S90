@@ -38,7 +38,7 @@ function HeroHeader() {
 
         <Box margin={{ top: "l" }}>
           <SpaceBetween size="l">
-            <img src={apps} alt="BudGeta Apps" width="300" />
+            <img src={apps} alt="S90 Apps" width="300" />
 
             <Box textAlign="center">
               <Button

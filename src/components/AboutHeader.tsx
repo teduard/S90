@@ -15,7 +15,7 @@ function AboutHeader() {
           disableOverlap
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           headerBackgroundStyle={(_mode) =>
-            `center center/cover url("/BudGeta/assets/hero.jpg") no-repeat`
+            `center center/cover url("/S90/assets/hero.jpg") no-repeat`
           }
           header={
             <Box padding={{ vertical: "xxxl" }}>
@@ -28,7 +28,7 @@ function AboutHeader() {
                       variant="h1"
                       padding="n"
                     >
-                      About <span className="gradient">BudGeta</span>
+                      About <span className="gradient">S90</span>
                     </Box>
                     <Box fontSize="display-l" fontWeight="light">
                       100% Offline & Private
@@ -57,7 +57,7 @@ function AboutHeader() {
         />
 
         <h1>
-          In an era of fragmented apps and scattered data, BudGeta provides a
+          In an era of fragmented apps and scattered data, S90 provides a
           unified ecosystem for personal operations.
         </h1>
         <h1>

@@ -21,11 +21,11 @@ function StickyFooter() {
         padding: "0 24px",
       }}
     >
-      <Link href="/BudGeta/about" variant="secondary">
+      <Link href="/S90/about" variant="secondary">
         About
       </Link>
       <Link
-        href="https://github.com/teduard/BudGeta"
+        href="https://github.com/teduard/S90"
         variant="secondary"
         external
       >
@@ -33,7 +33,7 @@ function StickyFooter() {
       </Link>
 
       <Box color="text-body-secondary" fontSize="body-s">
-        © {new Date().getFullYear()}, BudGeta
+        © {new Date().getFullYear()}, S90
       </Box>
     </footer>
   );

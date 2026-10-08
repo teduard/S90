@@ -9,7 +9,7 @@ function RelatedProducts() {
   return (
     <section className="page-section" aria-label="Related products and services">
       <Box variant="h2" margin={{ bottom: 'm' }}>
-        <span id="related-products">BudGeta products</span>
+        <span id="related-products">S90 products</span>
       </Box>
       <ul className="product-cards-list">
         <ProductCard
