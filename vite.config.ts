@@ -16,7 +16,8 @@ const pwaOptions: Partial<VitePWAOptions> = {
     maximumFileSizeToCacheInBytes: 8000000,
   },
   manifest: {
-    start_url: `${base}/?mode=standalone`,
+    //start_url: `${base}/?mode=standalone`,
+    start_url: `${base}/`,
     scope: base,
     display: "standalone",
     name: name,

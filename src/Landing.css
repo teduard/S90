@@ -56,6 +56,20 @@
   font-family: "Amazon Ember", "Helvetica Neue", Roboto, Arial, sans-serif;
 }
 
+.countdown-timer-unit {
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 8px;
+  color: #5f6b7a;
+}
+
+.countdown-timer-sound-blocked {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .countdown-timer-actions {
   display: flex;
   gap: 12px;
