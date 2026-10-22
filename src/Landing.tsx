@@ -1,11 +1,13 @@
 import RelatedProducts from "./components/RelatedProducts";
 import LandingPageLayout from './layouts/LandingPageLayout';
 import { HeroHeader } from "./components/HeroHeader";
+import CountdownTimer from "./components/CountdownTimer";
+import "./Landing.css";
 
 function Landing() {
   return (
     <>
-      <div className="center"><input type="button" value="S90 Button" /></div>
+      <div className="center"><CountdownTimer /></div>
     </>
   )
 }
