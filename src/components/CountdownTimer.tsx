@@ -41,9 +41,17 @@ const writeStoredTimer = (value: IStoredTimer) => {
   }
 };
 
+const clearStoredTimer = () => {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.warn("CountdownTimer: unable to clear stored timer:", error);
+  }
+};
+
 const formatTime = (seconds: number) => `${seconds}`;
 
-const CountdownTimer = ({ durationSeconds = 5 }: ICountdownTimerProps) => {
+const CountdownTimer = ({ durationSeconds = 90 }: ICountdownTimerProps) => {
   const [remaining, setRemaining] = useState(durationSeconds);
   const [cancelled, setCancelled] = useState(false);
   const [soundBlocked, setSoundBlocked] = useState(false);
@@ -87,16 +95,29 @@ const CountdownTimer = ({ durationSeconds = 5 }: ICountdownTimerProps) => {
   const applyStored = useCallback(
     (stored: IStoredTimer | null) => {
       if (stored && stored.durationSeconds === durationSeconds) {
-        deadlineRef.current = stored.deadline;
-        cancelledRef.current = stored.cancelled;
-        setCancelled(stored.cancelled);
-
         const left = stored.cancelled
           ? durationSeconds
           : Math.max(0, Math.ceil((stored.deadline - Date.now()) / 1000));
-        setRemaining(left);
-        // Only ring the alarm for a countdown that is still running.
+
+        if (!stored.cancelled && left <= 0) {
+          // The countdown expired while the page was closed - drop the stale
+          // data and start a fresh run.
+          const deadline = Date.now() + durationSeconds * 1000;
+          deadlineRef.current = deadline;
+          cancelledRef.current = false;
+          armedRef.current = true;
+          setCancelled(false);
+          setRemaining(durationSeconds);
+          clearStoredTimer();
+          writeStoredTimer({ deadline, cancelled: false, durationSeconds });
+          return;
+        }
+
+        deadlineRef.current = stored.deadline;
+        cancelledRef.current = stored.cancelled;
         armedRef.current = !stored.cancelled && left > 0;
+        setCancelled(stored.cancelled);
+        setRemaining(left);
         return;
       }
 
@@ -144,6 +165,9 @@ const CountdownTimer = ({ durationSeconds = 5 }: ICountdownTimerProps) => {
   useEffect(() => {
     const handleStorage = (event: StorageEvent) => {
       if (event.key !== STORAGE_KEY) return;
+      // A removal means the countdown expired in another tab - keep this one
+      // running instead of restarting it.
+      if (event.newValue === null) return;
       applyStored(readStoredTimer());
     };
 
@@ -151,9 +175,11 @@ const CountdownTimer = ({ durationSeconds = 5 }: ICountdownTimerProps) => {
     return () => window.removeEventListener("storage", handleStorage);
   }, [applyStored]);
 
-  // Ring the alarm when a running countdown reaches zero.
+  // Ring the alarm when a running countdown reaches zero, and drop the stored
+  // data so the next load starts a fresh countdown.
   useEffect(() => {
     if (!isFinished) return;
+    clearStoredTimer();
     if (!armedRef.current) return;
     armedRef.current = false;
     playAlarm();
